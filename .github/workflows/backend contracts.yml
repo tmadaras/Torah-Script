@@ -1,0 +1,43 @@
+backend_contracts = """
+name: Backend Contract Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+  schedule:
+    - cron: '0 */4 * * *'  # Every 4 hours
+  workflow_dispatch:
+
+jobs:
+  contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: Run Contract Tests
+      env:
+        API_BASE_URL: https://api.databutton.com/_projects/8fa82f06-8678-43a0-b9a3-2a2a1fe151f5/dbtn/prodx/app/routes
+      run: |
+        pip install httpx pytest
+        python -c "
+        import asyncio, httpx
+        async def test():
+            async with httpx.AsyncClient(timeout=60) as client:
+                r = await client.post('$API_BASE_URL/testing/contracts/run', 
+                                    params={'include_performance': True})
+                if r.status_code == 200:
+                    data = r.json()
+                    print(f'✅ Tests: {data.get(\"total_tests\", 0)}, Pass rate: {data.get(\"pass_rate\", 0):.1f}%')
+                    if data.get('pass_rate', 0) < 85: exit(1)
+                else: exit(1)
+        asyncio.run(test())
+        "
+"""
