@@ -1,0 +1,41 @@
+frontend_e2e = """
+name: Frontend E2E Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths: [ 'ui/**' ]
+  schedule:
+    - cron: '0 6,18 * * *'  # Twice daily
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    - name: Install Playwright
+      run: |
+        cd ui && npm ci
+        npx playwright install --with-deps
+    - name: Run E2E Tests
+      env:
+        APP_URL: https://torahemet.databutton.app/torah-script
+      run: |
+        python -c "
+        import asyncio
+        from playwright.async_api import async_playwright
+        async def test():
+            async with async_playwright() as p:
+                browser = await p.chromium.launch(headless=True)
+                page = await browser.new_page()
+                await page.goto('$APP_URL')
+                title = await page.title()
+                assert 'Torah' in title
+                print('✅ E2E tests passed')
+                await browser.close()
+        asyncio.run(test())
+        "
+"""
