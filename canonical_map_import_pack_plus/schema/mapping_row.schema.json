@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TanachCanonicalMapRow",
+  "type": "object",
+  "required": [
+    "source_book_39",
+    "source_chapter",
+    "source_verse",
+    "source_word_position",
+    "canon_book_24",
+    "canon_chapter",
+    "canon_verse",
+    "canon_word_position",
+    "hebrew_surface",
+    "hebrew_lemma",
+    "transliteration_sbl",
+    "root",
+    "final_mech",
+    "english_word_final",
+    "review_status"
+  ],
+  "properties": {
+    "source_book_39": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_chapter": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_verse": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_word_position": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "canon_book_24": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canon_chapter": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "canon_verse": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "canon_word_position": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "hebrew_surface": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hebrew_lemma": {
+      "type": "string",
+      "minLength": 1
+    },
+    "paleo_hebrew": {
+      "type": "string"
+    },
+    "pictographic_paleo": {
+      "type": "string"
+    },
+    "transliteration_sbl": {
+      "type": "string",
+      "minLength": 1
+    },
+    "root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "root_definition_concrete": {
+      "type": "string"
+    },
+    "benner_mechanical": {
+      "type": "string"
+    },
+    "final_mech": {
+      "type": "string",
+      "minLength": 1
+    },
+    "english_word_final": {
+      "type": "string",
+      "minLength": 1
+    },
+    "compiled_definitions": {
+      "type": "string"
+    },
+    "strong_number": {
+      "type": "string"
+    },
+    "bhsa_lexeme_id": {
+      "type": "string"
+    },
+    "decision_notes": {
+      "type": "string"
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "pending",
+        "needs_review"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

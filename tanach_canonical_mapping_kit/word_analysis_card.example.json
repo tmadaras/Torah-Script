@@ -1,0 +1,52 @@
+{
+  "hebrew_surface": "ברא",
+  "paleo_hebrew": "𐤁𐤓𐤀",
+  "pictographic_paleo": "Ox + Head + Aleph (carve/create)",
+  "inscriptions_refs": "CIIP II.123; AHRC #402",
+  "transliteration_sbl": "bara",
+  "root": "ברא",
+  "root_definition_concrete": "to cut/shape; carve out",
+  "benner_mechanical": "cut/shape",
+  "final_mech": "carve/create",
+  "english_word_final": "create",
+  "compiled_definitions": "Ancient: carve; Benner: cut/shape; HALOT: create (ex nihilo)",
+  "strong_number": "H1254",
+  "bhsa_lexeme_id": "lemma_12345",
+  "bhsa_features": {
+    "pos": "verb",
+    "stem": "Qal",
+    "aspect": "perf"
+  },
+  "alignments": {
+    "lxx": [
+      {
+        "lemma": "κτίζω",
+        "ref": "Gen 1:1"
+      }
+    ],
+    "targum": [
+      {
+        "lemma": "ברא",
+        "ref": "Onk Gen 1:1"
+      }
+    ],
+    "peshitta": [
+      {
+        "lemma": "ܒܪܐ",
+        "ref": "Pesh Gen 1:1"
+      }
+    ]
+  },
+  "evidence": {
+    "confidence": 0.95,
+    "rules_fired": [
+      "torah_seed",
+      "qal_perf_create"
+    ],
+    "notes": "HALOT supports create"
+  },
+  "provenance": {
+    "source_dictionaries": "HALOT;BDB;DCH;Benner;AHRC",
+    "review_status": "approved"
+  }
+}
